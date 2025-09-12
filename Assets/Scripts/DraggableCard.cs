@@ -94,6 +94,6 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private bool IsPointerOverDropZone(PointerEventData eventData)
     {
         if (eventData.pointerEnter == null) return false;
-        return eventData.pointerEnter.GetComponentInParent<DropZone>() != null;
+        return eventData.pointerEnter.GetComponentInParent<Dropzone>() != null;
     }
 }
