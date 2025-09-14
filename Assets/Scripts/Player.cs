@@ -1,24 +1,53 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public List<CardData> deck = new List<CardData>();
-    public List<CardInstance> hand = new List<CardInstance>();
-    public Transform handArea; // Where cards spawn in UI
-    public GameObject cardPrefab;
+    [Header("Decks")]
+    public DeckManager dawnDeck;
+    public DeckManager dayDeck;
+    public DeckManager duskDeck;
 
-    public void DrawCard()
+    [Header("Hands")]
+    public HandManager dawnHand;
+    public HandManager dayHand;
+    public HandManager duskHand;
+
+    [Header("Player Info")]
+    public string playerName;
+    public int mana;
+    public int maxMana;
+
+    // Draws one card from the selected deck-hand pair
+    public void DrawCard(string pool)
     {
-        if (deck.Count == 0) return;
+        switch (pool.ToLower())
+        {
+            case "dawn":
+                dawnDeck.DrawCardToHand(dawnHand);
+                break;
+            case "day":
+                dayDeck.DrawCardToHand(dayHand);
+                break;
+            case "dusk":
+                duskDeck.DrawCardToHand(duskHand);
+                break;
+            default:
+                Debug.LogWarning($"Invalid pool name: {pool}");
+                break;
+        }
+    }
 
-        CardData drawn = deck[0];
-        deck.RemoveAt(0);
+    public void DrawAll()
+    {
+        DrawCard("dawn");
+        DrawCard("day");
+        DrawCard("dusk");
+    }
 
-        GameObject cardGO = Instantiate(cardPrefab, handArea);
-        CardInstance instance = cardGO.GetComponent<CardInstance>();
-        instance.LoadCard(drawn);
-
-        hand.Add(instance);
+    public void GainMana()
+    {
+        // will work in tri mana later
+        maxMana = Mathf.Min(maxMana + 1, 10);
+        mana = maxMana;
     }
 }

@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4ddf578e027a45428f7e643b963a12d, type: 3}
-  m_Name: TestCard
+  m_Name: Day2
   m_EditorClassIdentifier: 
-  cardName: Test
-  manaCost: 1
-  attack: 1
-  health: 1
-  description: Test
+  cardName: Test Day Card 2
+  manaCost: 2
+  attack: 2
+  health: 2
+  type: 1
+  description: Day2

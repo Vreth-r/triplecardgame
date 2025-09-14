@@ -463,6 +463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369953887}
+  - component: {fileID: 369953888}
   m_Layer: 0
   m_Name: ------Player 2 Side----------------------------
   m_TagString: Untagged
@@ -479,7 +480,7 @@ Transform:
   m_GameObject: {fileID: 369953886}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -488,6 +489,73 @@ Transform:
   - {fileID: 309002345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &369953888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369953886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1806b77e21b04eb4895b95bc02879f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dawnDeck: {fileID: 654554792}
+  dayDeck: {fileID: 1153813831}
+  duskDeck: {fileID: 547525544}
+  dawnHand: {fileID: 985928666}
+  dayHand: {fileID: 1553243045}
+  duskHand: {fileID: 412118911}
+  playerName: Player 2
+  mana: 0
+  maxMana: 10
+--- !u!1 &405700256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 405700258}
+  - component: {fileID: 405700257}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &405700257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405700256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7075a0d888aef6140a6171e1d42b5913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 1036198726}
+  player2: {fileID: 369953888}
+--- !u!4 &405700258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405700256}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &412118909
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,10 +804,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingDeck:
-  - {fileID: 11400000, guid: 76cc448ca5e74f54ab870647079ee42e, type: 2}
-  - {fileID: 11400000, guid: ae0af61501d4223478486bee3a8ed175, type: 2}
+  - {fileID: 11400000, guid: a6c819b677d036144a08def297bf26bc, type: 2}
+  - {fileID: 11400000, guid: bddadabbc0fa97f448dd25318656f34e, type: 2}
   type: 2
-  handManager: {fileID: 412118911}
 --- !u!1 &587812365
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,9 +893,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingDeck:
   - {fileID: 11400000, guid: 76cc448ca5e74f54ab870647079ee42e, type: 2}
-  - {fileID: 11400000, guid: ae0af61501d4223478486bee3a8ed175, type: 2}
+  - {fileID: 11400000, guid: c268f44d2aee87c4bb97e0b27c641db7, type: 2}
   type: 0
-  handManager: {fileID: 985928666}
 --- !u!1 &718863246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,13 +1995,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 7, z: -25}
+  m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
+  m_LocalPosition: {x: 0, y: 12, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2211,6 +2277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1036198725}
+  - component: {fileID: 1036198726}
   m_Layer: 0
   m_Name: ------Player 1 Side----------------------------
   m_TagString: Untagged
@@ -2236,6 +2303,27 @@ Transform:
   - {fileID: 1287837991}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1036198726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036198724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1806b77e21b04eb4895b95bc02879f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dawnDeck: {fileID: 1302105222}
+  dayDeck: {fileID: 1139939107}
+  duskDeck: {fileID: 1261787170}
+  dawnHand: {fileID: 1817457253}
+  dayHand: {fileID: 893272007}
+  duskHand: {fileID: 1061394648}
+  playerName: Player 1
+  mana: 0
+  maxMana: 10
 --- !u!1 &1061394647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,10 +2403,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingDeck:
-  - {fileID: 11400000, guid: 76cc448ca5e74f54ab870647079ee42e, type: 2}
-  - {fileID: 11400000, guid: ae0af61501d4223478486bee3a8ed175, type: 2}
+  - {fileID: 11400000, guid: 2a8fea87f3c188140887efc6d3fbeece, type: 2}
+  - {fileID: 11400000, guid: 0257ac4dd6a8c614baa9a4d483d348b9, type: 2}
   type: 1
-  handManager: {fileID: 893272007}
 --- !u!4 &1139939108
 Transform:
   m_ObjectHideFlags: 0
@@ -2379,10 +2466,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingDeck:
-  - {fileID: 11400000, guid: 76cc448ca5e74f54ab870647079ee42e, type: 2}
-  - {fileID: 11400000, guid: ae0af61501d4223478486bee3a8ed175, type: 2}
+  - {fileID: 11400000, guid: 2a8fea87f3c188140887efc6d3fbeece, type: 2}
+  - {fileID: 11400000, guid: 0257ac4dd6a8c614baa9a4d483d348b9, type: 2}
   type: 1
-  handManager: {fileID: 1553243045}
 --- !u!1 &1170432828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,10 +2656,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingDeck:
-  - {fileID: 11400000, guid: 76cc448ca5e74f54ab870647079ee42e, type: 2}
-  - {fileID: 11400000, guid: ae0af61501d4223478486bee3a8ed175, type: 2}
+  - {fileID: 11400000, guid: a6c819b677d036144a08def297bf26bc, type: 2}
+  - {fileID: 11400000, guid: bddadabbc0fa97f448dd25318656f34e, type: 2}
   type: 2
-  handManager: {fileID: 1061394648}
 --- !u!4 &1261787171
 Transform:
   m_ObjectHideFlags: 0
@@ -2654,9 +2739,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingDeck:
   - {fileID: 11400000, guid: 76cc448ca5e74f54ab870647079ee42e, type: 2}
-  - {fileID: 11400000, guid: ae0af61501d4223478486bee3a8ed175, type: 2}
+  - {fileID: 11400000, guid: c268f44d2aee87c4bb97e0b27c641db7, type: 2}
   type: 0
-  handManager: {fileID: 1817457253}
 --- !u!4 &1302105223
 Transform:
   m_ObjectHideFlags: 0
@@ -4129,8 +4213,8 @@ Transform:
   m_GameObject: {fileID: 1869834165}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -8, z: -4.28}
-  m_LocalScale: {x: 70, y: 1, z: 30}
+  m_LocalPosition: {x: 0, y: -8, z: -8}
+  m_LocalScale: {x: 70, y: 1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4406,6 +4490,7 @@ SceneRoots:
   - {fileID: 1657852330}
   - {fileID: 831342228}
   - {fileID: 1869834170}
+  - {fileID: 405700258}
   - {fileID: 440422514}
   - {fileID: 1036198725}
   - {fileID: 369953887}

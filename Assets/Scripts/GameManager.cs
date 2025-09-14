@@ -5,7 +5,8 @@ public class GameManager : MonoBehaviour
     public Player player1;
     public Player player2;
 
-    private int turn = 1;
+    private Player currentPlayer;
+    private int turnNumber = 0;
 
     void Start()
     {
@@ -14,26 +15,34 @@ public class GameManager : MonoBehaviour
 
     void StartGame()
     {
-        // Shuffle decks, draw opening hands
         for (int i = 0; i < 3; i++)
         {
-            player1.DrawCard();
-            player2.DrawCard();
+            player1.DrawAll();
+            player2.DrawAll();
         }
+
+        // Player 1 starts
+        currentPlayer = player1;
+        StartTurn();
+    }
+
+    void StartTurn()
+    {
+        turnNumber++;
+        Debug.Log($"--- Turn {turnNumber} --- {currentPlayer.playerName}'s turn");
+
+        // Gain mana
+        currentPlayer.GainMana();
+
+        // Draw from each deck
+        currentPlayer.DrawAll();
+
+        // Now player can take actions (play cards, attack, etc.)
     }
 
     public void EndTurn()
     {
-        turn++;
-        if (turn % 2 == 1)
-        {
-            Debug.Log("Player 1's turn");
-            player1.DrawCard();
-        }
-        else
-        {
-            Debug.Log("Player 2's turn");
-            player2.DrawCard();
-        }
+        currentPlayer = (currentPlayer == player1) ? player2 : player1;
+        StartTurn();
     }
 }

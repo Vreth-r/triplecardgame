@@ -4,20 +4,16 @@ using UnityEngine;
 public class DeckManager : MonoBehaviour
 {
     [Header("Deck Setup")]
-    public List<CardData> startingDeck; // fill with ScriptableObjects in Inspector
+    public List<CardData> startingDeck;
     private Queue<CardData> deckQueue;
     public DropzoneType type;
 
-    [Header("References")]
-    public HandManager handManager;
-
-    void Start()
+    void Awake()
     {
-        // Copy deck into queue
         deckQueue = new Queue<CardData>(startingDeck);
     }
 
-    public void DrawCard()
+    public void DrawCardToHand(HandManager handManager)
     {
         if (deckQueue.Count == 0)
         {
