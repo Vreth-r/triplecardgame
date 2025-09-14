@@ -11,6 +11,8 @@ public class HandManager : MonoBehaviour
 
     private List<GameObject> cardsInHand = new List<GameObject>();
 
+    public DropzoneType type;
+
     public void AddCardToHand(CardData cardData)
     {
         GameObject newCard = Instantiate(cardPrefab, handArea);

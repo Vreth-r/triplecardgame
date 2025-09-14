@@ -8,6 +8,8 @@ public class CardData : ScriptableObject
     public int attack;
     public int health;
 
+    public DropzoneType type;
+
     [TextArea]
     public string description;
     

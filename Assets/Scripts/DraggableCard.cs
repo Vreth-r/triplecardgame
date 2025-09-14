@@ -11,26 +11,29 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private Transform originalParent;
     private bool dragging;
 
-    private float fixedY; // store the card’s Y height at drag start
-
+    private float fixedY;
     private Vector3 originalPosition;
     private Quaternion originalRotation;
+    private Collider cardCollider;
 
     [Header("Snapback Settings")]
     public float snapDuration = 0.25f;
+
+    private void Awake()
+    {
+        cardCollider = GetComponent<Collider>();
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         cam = eventData.pressEventCamera != null ? eventData.pressEventCamera : Camera.main;
         if (cam == null) return;
 
-        // Save Y position
         fixedY = transform.position.y;
         originalPosition = transform.position;
         originalRotation = transform.rotation;
         originalParent = transform.parent;
 
-        // Create a horizontal drag plane at this Y height
         dragPlane = new Plane(Vector3.up, new Vector3(0, fixedY, 0));
 
         Ray ray = cam.ScreenPointToRay(eventData.position);
@@ -38,6 +41,9 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             offset = transform.position - ray.GetPoint(enter);
         }
+
+        // Disable collider so the card doesn’t block raycasts to drop zones
+        if (cardCollider) cardCollider.enabled = false;
 
         dragging = true;
     }
@@ -50,10 +56,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (dragPlane.Raycast(ray, out float enter))
         {
             Vector3 targetPos = ray.GetPoint(enter) + offset;
-
-            // Lock Y so card stays on the table
             targetPos.y = fixedY;
-
             transform.position = targetPos;
         }
     }
@@ -62,7 +65,9 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         dragging = false;
 
-        // If not dropped on a zone → snap back
+        // Re-enable collider after drag
+        if (cardCollider) cardCollider.enabled = true;
+
         if (!IsPointerOverDropZone(eventData))
         {
             StartCoroutine(SnapBack());

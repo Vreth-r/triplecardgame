@@ -6,6 +6,7 @@ public class DeckManager : MonoBehaviour
     [Header("Deck Setup")]
     public List<CardData> startingDeck; // fill with ScriptableObjects in Inspector
     private Queue<CardData> deckQueue;
+    public DropzoneType type;
 
     [Header("References")]
     public HandManager handManager;

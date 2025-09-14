@@ -3,9 +3,9 @@ using UnityEngine.EventSystems;
 
 public enum DropzoneType
 {
-    Battlefield,
-    Discard,
-    Hand
+    Dawn,
+    Day,
+    Dusk
 }
 
 [RequireComponent(typeof(Collider))]
@@ -17,6 +17,7 @@ public class Dropzone : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         var draggable = eventData.pointerDrag?.GetComponent<DraggableCard>();
+        var cardInstance = eventData.pointerDrag?.GetComponent<CardInstance>();
         if (draggable == null) return;
 
         // Reparent under this zone
@@ -29,7 +30,7 @@ public class Dropzone : MonoBehaviour, IDropHandler
         Debug.Log($"Card dropped into {zoneType}");
 
         // If dropped on battlefield → remove from hand
-        if (zoneType == DropzoneType.Battlefield && handManager != null)
+        if (cardInstance.type == zoneType && handManager != null)
         {
             handManager.RemoveCardFromHand(draggable.gameObject);
         }
